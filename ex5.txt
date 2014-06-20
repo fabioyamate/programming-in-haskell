@@ -1,0 +1,2 @@
+Replacing the `<=` with `<` would generate unique sorted list, because
+it would ignore values equal to the pivot.

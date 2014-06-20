@@ -1,0 +1,7 @@
+sum [x]
+= { applying the sum }
+x + sum []
+= { applying the sum }
+x + 0
+= { applying + } (0 is the identity for +)
+x

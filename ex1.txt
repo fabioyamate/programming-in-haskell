@@ -1,0 +1,15 @@
+Another possible evaluation for `double (double 2)` is:
+
+```
+double (double 2)
+= { applying the inner double }
+double (2 + 2)
+= { applying the outer double }
+(2 + 2) + (2 + 2)
+= { applying the left + }
+4 + (2 + 2)
+= { applying the right + }
+4 + 4
+= { applying + }
+8
+```
