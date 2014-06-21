@@ -1,7 +1,7 @@
 -- just invert concat with larger first and smaller later
 rqsort [] = []
 rqsort (x:xs) = rqsort larger ++ [x] ++ rqsort smaller
-    where smaller = [n | n <- xs, n < x]
+    where smaller = [n | n <- xs, n <= x]
           larger  = [n | n <- xs, n > x]
 
 -- main = do
