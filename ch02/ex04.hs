@@ -1,4 +1,6 @@
-last xs = xs !! (length xs - 1)
+last' :: [x] -> x
+last' xs = xs !! (length xs - 1)
 
--- last2 xs = head (reverse xs)
-last2 = head . reverse
+last'' :: [x] -> x
+-- last'' xs = head (reverse xs)
+last'' = head . reverse
