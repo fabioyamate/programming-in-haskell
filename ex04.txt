@@ -1,0 +1,15 @@
+Why is it not feasible in general for function types to be instances
+of the Eq class? When is it feasible? Hint: two functions of the same
+type are equal if they always return equal results for equal arguments.
+
+Because a function type has a set of values that correspond its domain and
+the range of values associated for each input. In order to define equality,
+it would be necessary that this property is identical for two given functions.
+Which is something hard to determine.
+
+It would be feasible on code automated tests, so for example, you could do:
+
+mySortFunc == quickSort
+
+Which just input random values and then check that boths outputs the same
+values.
