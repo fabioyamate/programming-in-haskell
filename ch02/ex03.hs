@@ -1,4 +1,4 @@
--- 1. backticks instead of accent
+-- 1. backticks instead of quote
 -- 2. function names must be in lower case, upper case are for types
 -- 3. indentation of `xs` expression
 
