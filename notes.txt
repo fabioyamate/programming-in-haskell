@@ -1,0 +1,21 @@
+Video: http://channel9.msdn.com/Series/C9-Lectures-Erik-Meijer-Functional-Programming-Fundamentals/C9-Lectures-Dr-Erik-Meijer-Functional-Programming-Fundamentals-Chapter-3-of-13
+
+types = set of related values
+
+  ex. Bool = {True, False}
+
+tuple = ordered list of elements
+
+  n-tuple, 2-tuple (double), 3-tuple (triple) ...
+
+  0-tuple = empty tuple = unit ()
+  1-tuple = single = Monad
+
+  ex. (1, 2, 3, 4) = (a1, a2, a3, a4) where a1, a2, a3, a4 = Int
+      Int x Int x Int x Int
+
+      (1, True), Int x Bool
+
+Func<T> ~ () -> T
+Func<S, T> ~ S -> T
+Action<T> ~ T -> ()
