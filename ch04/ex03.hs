@@ -20,7 +20,7 @@ or4 False False = False
 test f = [f x y | x <- [True, False], y <- [True, False]]
 
 main = do
-    putStrLn . show $ test or1
-    putStrLn . show $ test or2
-    putStrLn . show $ test or3
-    putStrLn . show $ test or4
+    print $ test or1
+    print $ test or2
+    print $ test or3
+    print $ test or4

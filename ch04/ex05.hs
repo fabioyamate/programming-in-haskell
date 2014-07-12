@@ -7,5 +7,5 @@ and2 a b = if a then b else a
 test f = [f x y | x <- [True, False], y <- [True, False]]
 
 main = do
-    putStrLn . show $ test and1
-    putStrLn . show $ test and2
+    print $ test and1
+    print $ test and2

@@ -46,20 +46,20 @@ and' = \x -> \y -> ((x y) false')
 or' = \x -> \y -> ((x true') y)
 
 main = do
-    putStrLn . show $ id' 1
-    putStrLn . show $ (const' 1) 2
-    putStrLn . show $ apply' (1+) 2
-    putStrLn . show $ p fst'
-    putStrLn . show $ p snd'
-    putStrLn . show $ cond' True False true'
-    putStrLn . show $ cond' True False false'
+    print $ id' 1
+    print $ (const' 1) 2
+    print $ apply' (1+) 2
+    print $ p fst'
+    print $ p snd'
+    print $ cond' True False true'
+    print $ cond' True False false'
     putStrLn "not'"
-    putStrLn . show $ cond' True False (not' true')
-    putStrLn . show $ cond' True False (not' false')
+    print $ cond' True False (not' true')
+    print $ cond' True False (not' false')
     putStrLn "and'"
-    putStrLn . show $ cond' True False (and' true' false')
-    putStrLn . show $ cond' True False (and' true' true')
+    print $ cond' True False (and' true' false')
+    print $ cond' True False (and' true' true')
     putStrLn "or'"
-    putStrLn . show $ cond' True False (or' false' true')
-    putStrLn . show $ cond' True False (or' false' false')
+    print $ cond' True False (or' false' true')
+    print $ cond' True False (or' false' false')
     where p = pair' 1 2

@@ -24,13 +24,13 @@ const' :: a -> (b -> a)
 const' x = \_ -> x
 
 main = do
-    putStrLn . show $ abs' (-3)
-    putStrLn . show $ not' True
-    putStrLn . show $ and' True True
-    putStrLn . show $ and' False True
-    putStrLn . show $ and''' True True
-    putStrLn . show $ and''' True False
-    putStrLn . show $ 1:(2:[])
-    putStrLn . show $ (\x -> x + x) 2
-    putStrLn . show $ (\x -> \y -> x + y) 1 2
-    putStrLn . show $ const 1 2
+    print $ abs' (-3)
+    print $ not' True
+    print $ and' True True
+    print $ and' False True
+    print $ and''' True True
+    print $ and''' True False
+    print $ 1:(2:[])
+    print $ (\x -> x + x) 2
+    print $ (\x -> \y -> x + y) 1 2
+    print $ const 1 2
