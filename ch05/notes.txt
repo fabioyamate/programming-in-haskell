@@ -1,0 +1,7 @@
+math comprehensions is used to build new sets from existing ones
+
+A = { x * 2 | x in Natural }
+
+It reads as: for all double x such that x is an element of the set of Natural numbers.
+
+[x * 2 | x <- [1..]]
