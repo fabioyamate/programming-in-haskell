@@ -5,3 +5,27 @@ A = { x * 2 | x in Natural }
 It reads as: for all double x such that x is an element of the set of Natural numbers.
 
 [x * 2 | x <- [1..]]
+
+x <- [1..] is called generator
+
+Bounded variables are visible on inner "loops".
+
+[x + y | x <- [1,2,3], y <- [x..6]]
+
+You can expand this as:
+
+  foreach x in [1,2,3]
+    foreach y in [x..6]
+      yield x + y
+
+.NET LINQ has list comprehensions with a different syntax
+
+  from x in Range(1, 3)
+  from y in Range(4, 6)
+  select new { x => x, y => y }
+
+Guards are also possible:
+
+  from x in Range(1, 10)
+  where x % 2 == 0
+  select x
