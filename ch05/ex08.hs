@@ -11,7 +11,7 @@ int2let n = chr (n + ord 'a')
 
 -- change 1: shift on upper letters
 shift :: Int -> Char -> Char
-shift n c | isUpper c = toUpper (shift n (toLower c))
+shift n c | isUpper c = toUpper $ shift n $ toLower c
           | isLower c = int2let ((let2int c + n) `mod` 26)
           | otherwise = c
 
@@ -51,7 +51,7 @@ positions x xs = [i | (x', i) <- zip xs [0..], x' == x]
 
 crack xs = decode factor xs
     where
-        factor = head (positions (minimum chitab) chitab)
+        factor = head $ positions (minimum chitab) chitab
         chitab = [chisqr (rotate n table') table | n <- [0..25]]
         table' = freqs xs
 
