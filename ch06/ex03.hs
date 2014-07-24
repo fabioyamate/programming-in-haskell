@@ -1,6 +1,10 @@
+-- and [] = True
+-- and (x:xs) = x && and xs
+
 and' :: [Bool] -> Bool
-and' [] = False
-and' (x:xs) = x && and xs
+and' [] = True
+and' (False:_) = False
+and' (True:xs) = and' xs
 
 concat' :: [[a]] -> [a]
 concat' [] = []
