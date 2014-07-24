@@ -17,7 +17,6 @@ msort' (x:xs)
     where (left, right) = halve (x:xs)
 
 halve :: [a] -> ([a], [a])
-halve [] = ([], [])
 halve xs = (take half xs, drop half xs)
     where half = length xs `div` 2
 
