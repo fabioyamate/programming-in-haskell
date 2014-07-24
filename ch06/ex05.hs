@@ -5,7 +5,8 @@
 
 msort :: Ord a => [a] -> [a]
 msort [] = []
-msort (x:[]) = [x]
+-- msort (x:[]) = [x]
+msort [x] = [x]
 msort xs = merge (msort left) (msort right)
     where (left, right) = halve xs
 
