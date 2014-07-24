@@ -9,6 +9,13 @@ msort (x:[]) = [x]
 msort xs = merge (msort left) (msort right)
     where (left, right) = halve xs
 
+msort' :: Ord a => [a] -> [a]
+msort' [] = []
+msort' (x:xs)
+    | null xs = [x]
+    | otherwise =  merge (msort' left) (msort' right)
+    where (left, right) = halve (x:xs)
+
 halve :: [a] -> ([a], [a])
 halve [] = ([], [])
 halve xs = (take half xs, drop half xs)
@@ -25,3 +32,4 @@ main = do
     print $ msort ([] :: [Int])
     print $ msort [1]
     print $ msort [1..100]
+    print $ msort' [1..100]

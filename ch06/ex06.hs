@@ -11,8 +11,15 @@ last' [] = error "empty list"
 last' (x:[]) = x
 last' (_:xs) = last' xs
 
+last'' :: [a] -> a
+last'' [] = error "empty list"
+last'' (x:xs)
+    | null xs = x
+    | otherwise = last'' xs
+
 main = do
     print $ sum' []
     print $ sum' [1..10]
     print $ take' 2 [1..10]
     print $ last' [1..10]
+    print $ last'' [1..10]
