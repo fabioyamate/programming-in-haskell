@@ -1,0 +1,19 @@
+The definition of `compose` function is given:
+
+  compose :: [a -> a] -> (a -> a)
+  compose = foldr (.) id
+
+The best way to understand why `sumsqreven` is invalid is checking the type signatures.
+
+  sumsqreven = compose [sum, map (^2), filter even]
+
+The `compose` functions applies a list of functions from type `a -> a` to another in the same
+type.
+
+Checking each individual function, we can see that `filter even` have a type of `[a] -> [a]`.
+The same applies to the `map (^2)` that have type `[a] -> [a]`. However, the `sum` function
+doesn't, it maps `[a] -> a`.
+
+This is why the `sumsqreven` definition is invalid. The fix is:
+
+  sumsqreven = sum . compose [map (^2), filter even]
