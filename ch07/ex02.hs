@@ -7,13 +7,19 @@ any' f [] = False
 any' f (x:xs) = f x || any' f xs
 
 takeWhile' :: (a -> Bool) -> [a] -> [a]
-takeWhile' f xs = [x | x <- xs, f x]
+takeWhile' _ [] = []
+takeWhile' f (x:xs)
+    | f x = x : takeWhile' f xs
+    | otherwise = []
 
 dropWhile' :: (a -> Bool) -> [a] -> [a]
-dropWhile' f xs = [x | x <- xs, (not . f) x]
+dropWhile' _ [] = []
+dropWhile' f (x:xs)
+    | f x = dropWhile' f xs
+    | otherwise = x:xs
 
 main = do
-    print $ all' odd [1,3,5]
-    print $ any' even [1,3,5]
-    print $ takeWhile' even [1,2,3,4,5]
-    print $ dropWhile' even [1,2,3,4,5]
+    print $ all odd [1,3,5] == all' odd [1,3,5]
+    print $ any even [1,3,5] == any' even [1,3,5]
+    print $ takeWhile even [1,2,3,4,5] == takeWhile' even [1,2,3,4,5]
+    print $ dropWhile even [1,2,3,4,5] == dropWhile' even [1,2,3,4,5]
