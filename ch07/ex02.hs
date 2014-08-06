@@ -1,9 +1,9 @@
 all' :: (a -> Bool) -> [a] -> Bool
-all' f [] = True
+all' _ [] = True
 all' f (x:xs) = f x && all' f xs
 
 any' :: (a -> Bool) -> [a] -> Bool
-any' f [] = False
+any' _ [] = False
 any' f (x:xs) = f x || any' f xs
 
 takeWhile' :: (a -> Bool) -> [a] -> [a]
