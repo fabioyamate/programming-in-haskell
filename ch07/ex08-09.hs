@@ -13,14 +13,16 @@ make8 :: [Bit] -> [Bit]
 make8 bits = take 8 (bits ++ repeat 0)
 
 -- step 1: add function to include the parity bit
-parity :: [Bit] -> [Bit]
-parity bits = bits ++ [parityBit]
-    where ones = length (filter (==1) bits)
-          parityBit = ones `mod` 2
+parity :: [Bit] -> Bit
+parity bs = (sum bs) `mod` 2
+
+addParityBit :: [Bit] -> [Bit]
+addParityBit bits = (parity bits) : bits
+    where parity bs = sum bs `mod` 2
 
 -- step 2: include the parity when encoding
 encode :: String -> [Bit]
-encode = concat . map (parity . make8 . int2bin . ord)
+encode = concat . map (addParityBit . make8 . int2bin . ord)
 
 -- step 3: change chop8 to chop9 to include the parity bit
 chop9 :: [Bit] -> [[Bit]]
@@ -29,10 +31,9 @@ chop9 bits = take 9 bits : chop9 (drop 9 bits)
 
 -- step 4: add function to check parity bit
 parityCheck :: [Bit] -> [Bit]
-parityCheck bits
-        | parity binNumber == bits = binNumber
+parityCheck (b:bs)
+        | parity bs == b = bs
         | otherwise = error "invalid parity"
-        where binNumber = take 8 bits
 
 -- step 5: include parity check when decoding
 decode :: [Bit] -> String
