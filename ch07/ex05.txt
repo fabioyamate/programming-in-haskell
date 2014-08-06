@@ -7,7 +7,7 @@ The best way to understand why `sumsqreven` is invalid is checking the type sign
 
   sumsqreven = compose [sum, map (^2), filter even]
 
-The `compose` functions applies a list of functions from type `a -> a` to another in the same
+The `compose` function applies a list of functions from type `a -> a` to another in the same
 type.
 
 Checking each individual function, we can see that `filter even` have a type of `[a] -> [a]`.
