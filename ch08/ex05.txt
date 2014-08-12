@@ -1,0 +1,62 @@
+The grammar prior to the simplification is:
+
+expr   ::= term + expr | term
+term   ::= factor * term | factor
+factor ::= (expr) | nat
+nat    ::= 0 | 1 | 2 | ...
+
+The simplest expression would be just a natural number like `2`. Using
+the non-simplified grammar it would parse the first `term`. But once it
+tries to parse the symbol `+` it would rollback the previous parsed `expr`
+and then try the next branch that is the `term` that was already parsed
+previously, but done twice.
+
+However, there is another issue when parsing the tree. Someone could think
+that it would first try to match the `term + expr` and once it didn't match
+it goes to the `term`. But due to the lazy nature, before reaching the symbol
+`+` it would eval the entire `term` node. Let's see the application:
+
+  2
+  { parse expr }
+  term
+  { parse term }
+  factor
+  { parse factor }
+  nat
+  { parse nat }
+  return 2
+  { parse symbol + }
+  -- FAIL! Try other branch
+  2
+  { parse term }
+  factor
+  { parse factor }
+  nat
+  { parse nat }
+  return 2
+  -- DONE
+
+With the simplification we parse first the natural number and the try to
+find for a symbol `+`, if it doesn't find it checks if is a empty char, if
+so it finishes the parsing expression.
+
+expr   ::= term (+ expr | empty)
+term   ::= factor (* term | empty)
+factor ::= (expr) | nat
+nat    ::= 0 | 1 | 2 | ...
+
+This would be the application:
+
+  2
+  { parse expr }
+  term
+  { parse term }
+  factor
+  { parse factor }
+  nat
+  { parse nat }
+  return 2
+  { parse symbol + }
+  -- FAIL! Try other branch
+  { parse empty }
+  -- DONE
