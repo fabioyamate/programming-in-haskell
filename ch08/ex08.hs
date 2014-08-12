@@ -14,4 +14,10 @@ expr = (expr >>= \e -> symbol "-" >> nat >>= \n -> return (e - n))
 -- is a recursive function that never ends since it never reaches the
 -- symbol "-".
 
--- (d) Grammar rules:
+-- (d) To fix this recursive approach, we first parse all natural number
+-- in subtraction expression and then reduce from left with the (-) function
+-- where the initial state is the first natural number parsed.
+
+expr :: Parser Int
+expr = nat >>= \x ->
+    many (symbol "-" >> nat) >>= \xs -> return (foldl (-) x xs)
